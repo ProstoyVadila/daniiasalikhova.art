@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniia Salikhova — Illustrator Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --cream:        oklch(97% 0.012 60);
+      --cream-mid:    oklch(93% 0.018 60);
+      --ink:          oklch(22% 0.010 60);
+      --ink-soft:     oklch(44% 0.010 60);
+      --terracotta:   oklch(62% 0.115 38);
+      --terra-light:  oklch(90% 0.040 38);
+      --sage:         oklch(66% 0.072 152);
+      --sage-light:   oklch(92% 0.030 152);
+      --gold:         oklch(76% 0.110 72);
+      --nav-h:        64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: oklch(97% 0.012 60 / 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid oklch(88% 0.020 60);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--terracotta); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-h) + 60px) 40px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-blobs {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-bg-blobs circle {
+      filter: blur(80px);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero-tagline {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+
+    .hero-contact {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px oklch(62% 0.115 38 / 0.30);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid oklch(78% 0.020 60);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-soft);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--terracotta), transparent);
+      animation: scrollpulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollpulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ── SECTION COMMON ──────────────────────────────────── */
+    .section {
+      padding: 96px 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-alt {
+      background: var(--cream-mid);
+      max-width: 100%;
+      padding: 96px 0;
+    }
+
+    .section-alt .section-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .section-desc {
+      margin-top: 14px;
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      max-width: 560px;
+      line-height: 1.75;
+      text-wrap: pretty;
+    }
+
+    /* ── GRID GALLERY ────────────────────────────────────── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid.cols-2 {
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    }
+
+    .gallery-grid.cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: oklch(90% 0.015 60);
+      cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item.portrait { aspect-ratio: 3/4; }
+    .gallery-item.square   { aspect-ratio: 1/1; }
+    .gallery-item.wide     { aspect-ratio: 16/9; grid-column: span 2; }
+    .gallery-item.tall     { aspect-ratio: 3/4; grid-row: span 1; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, oklch(22% 0.010 60 / 0.75) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .gallery-item:hover .gallery-item-overlay {
+      opacity: 1;
+    }
+
+    .gallery-item-label {
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+    }
+
+    .gallery-item-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      background: var(--terracotta);
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+
+    /* ── PROCESS SECTION ─────────────────────────────────── */
+    .process-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-bottom: 64px;
+    }
+
+    .process-row:last-child { margin-bottom: 0; }
+
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .process-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--terra-light);
+      color: var(--terracotta);
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .process-text strong {
+      font-weight: 500;
+      color: var(--ink);
+      font-size: 0.9rem;
+    }
+
+    .process-text p {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    .process-image-strip {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .process-image-strip img,
+    .process-image-wide img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+      background: oklch(91% 0.015 60);
+    }
+
+    .process-image-strip > div {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .process-image-wide {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* ── TOOLS SECTION ───────────────────────────────────── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .tool-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      border: 1.5px solid oklch(90% 0.015 60);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tool-card:hover {
+      border-color: var(--terracotta);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px oklch(62% 0.115 38 / 0.10);
+    }
+
+    .tool-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .tool-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .tool-type {
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-chip {
+      padding: 7px 16px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 400;
+      background: var(--sage-light);
+      color: oklch(40% 0.072 152);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: oklch(75% 0.010 60);
+      padding: 56px 40px;
+      text-align: center;
+    }
+
+    footer .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    footer .footer-tagline {
+      font-size: 0.88rem;
+      margin-bottom: 28px;
+      opacity: 0.7;
+    }
+
+    footer .footer-contact {
+      font-size: 0.88rem;
+      margin-bottom: 36px;
+    }
+
+    footer .footer-contact a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    footer .footer-contact a:hover { opacity: 0.75; }
+
+    footer .footer-copy {
+      font-size: 0.75rem;
+      opacity: 0.4;
+    }
+
+    /* ── LIGHTBOX ────────────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: oklch(10% 0.005 60 / 0.94);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 32px 80px oklch(5% 0.005 60 / 0.8);
+      transform: scale(0.96);
+      transition: transform 0.3s;
+    }
+
+    .lightbox.open img { transform: scale(1); }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: oklch(100% 0 0 / 0.1);
+      border: 1.5px solid oklch(100% 0 0 / 0.25);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close:hover { background: oklch(100% 0 0 / 0.2); }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: oklch(85% 0.010 60);
+      font-size: 0.85rem;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── DIVIDER ─────────────────────────────────────────── */
+    .divider {
+      width: 64px;
+      height: 2px;
+      background: var(--terracotta);
+      margin: 20px 0 0;
+      border-radius: 2px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 0.75rem; }
+      .section { padding: 64px 24px; }
+      .section-alt .section-inner { padding: 0 24px; }
+      .gallery-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.wide { grid-column: span 1; aspect-ratio: 4/3; }
+      .process-row { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid.cols-2 { grid-template-columns: 1fr; }
+      .gallery-grid.cols-3 { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      footer { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#">Daniia Salikhova</a>
+    <ul class="nav-links">
+      <li><a href="#children">Children's Books</a></li>
+      <li><a href="#fantasy">Fantasy</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#digital">Digital</a></li>
+      <li><a href="#watercolor">ANIMALS</a></li>
+      <li><a href="#vector">FLAT</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#contact" class="btn btn-primary" style="padding:8px 18px;font-size:0.78rem;">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-bg-blobs" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="200" cy="300" r="320" fill="oklch(90% 0.040 38)" opacity="0.35"/>
+      <circle cx="1280" cy="200" r="260" fill="oklch(92% 0.030 152)" opacity="0.30"/>
+      <circle cx="750" cy="750" r="280" fill="oklch(92% 0.035 70)" opacity="0.25"/>
+    </svg>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Illustrator Portfolio</span>
+      <h1 class="hero-name">Daniia<br><em>Salikhova</em></h1>
+      <p class="hero-tagline">Illustrator specializing in children's books and fantasy art across traditional and digital media.</p>
+      <div class="hero-contact">
+        <a href="mailto:daniia.salikhova.ph@gmail.com" class="btn btn-primary">Get in Touch</a>
+        <a href="#children" class="btn btn-ghost">View Work ↓</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- SECTION 1: CHILDREN'S BOOK ILLUSTRATION -->
+  <section class="section" id="children">
+    <div class="section-header">
+      <span class="section-label">01</span>
+      <h2 class="section-title">Children's Books Illustrations</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Expressive illustrations for young readers — from cosy interiors to adventurous scenes. Created in Procreate, Photoshop and Clip Studio Paint.</p>
+    </div>
+    <div class="gallery-grid cols-3">
+      <div class="gallery-item wide" onclick="openLightbox('images/21_redone.jpg','Boy at desk — Children\'s book illustration')">
+        <img src="images/21_redone.jpg" alt="Boy reading at desk" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div>
+            <div class="gallery-item-tag">PHOTOSHOP</div>
+            <div class="gallery-item-label">Boy at Desk</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item portrait" onclick="openLightbox('images/33_redone.jpg','Four Seasons — circular composition')">
+        <img src="images/33_redone.jpg" alt="Four seasons circular composition" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div>
+            <div class="gallery-item-tag">PHOTOSHOP</div>
+            <div class="gallery-item-label">Four Seasons</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/10.jpg','Living room interior — children\'s book style')">
+        <img src="images/10.jpg" alt="Cosy living room" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div>
+            <div class="gallery-item-tag">PHOTOSHOP</div>
+            <div class="gallery-item-label">Cosy Living Room</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item wide" onclick="openLightbox('images/Untitled_Artwork 2 copy.png','Girl with magic book — children\'s fantasy')">
+        <img src="images/Untitled_Artwork 2 copy.png" alt="Girl conjuring magical book" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div>
+            <div class="gallery-item-tag">Clip Studio Paint</div>
+            <div class="gallery-item-label">The Magic Book</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: FANTASY & CHARACTER PORTRAITS -->
+  <div class="section-alt" id="fantasy">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">02</span>
+        <h2 class="section-title">Fantasy Portraits</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Detailed character portraits ranging from moody warriors to ethereal beings. Digital painting in Photoshop and Procreate.</p>
+      </div>
+      <div class="gallery-grid cols-3">
+        <div class="gallery-item portrait" onclick="openLightbox('images/Untitled_Artwork.png','Warrior with red moon — digital painting')">
+          <img src="images/Untitled_Artwork.png" alt="Warrior with red moon" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">Photoshop</div>
+              <div class="gallery-item-label">Red Moon Warrior</div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item portrait" onclick="openLightbox('images/Untitled_Artwork 1.png','Fantasy priestess in white — digital painting')">
+          <img src="images/Untitled_Artwork 1.png" alt="Fantasy priestess in white" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">Photoshop</div>
+              <div class="gallery-item-label">The Priestess</div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item portrait" onclick="openLightbox('images/Shadowheart (Selune) Artstation.png','Shadowheart (Selûne) — fan art portrait')">
+          <img src="images/Shadowheart (Selune) Artstation.png" alt="Shadowheart portrait" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">Photoshop</div>
+              <div class="gallery-item-label">Shadowheart (Selûne)</div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item portrait" onclick="openLightbox('images/Untitled_Artwork 6.png','Albino elf portrait — glitter background')">
+          <img src="images/Untitled_Artwork 6.png" alt="Albino elf close-up portrait" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">ProCreate</div>
+              <div class="gallery-item-label">Albino Elf</div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item portrait" onclick="openLightbox('images/Untitled_Artwork 7.png','Redhead girl in blossom — portrait')">
+          <img src="images/Untitled_Artwork 7.png" alt="Redhead girl in blossom field" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">ProCreate</div>
+              <div class="gallery-item-label">Blossom</div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item portrait" onclick="openLightbox('images/Untitled_Artwork 11.png','Mermaid portrait underwater')">
+          <img src="images/Untitled_Artwork 11.png" alt="Mermaid underwater portrait" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">ProCreate</div>
+              <div class="gallery-item-label">Sea Keeper</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: CHARACTER DESIGN PROCESS -->
+  <section class="section" id="process">
+    <div class="section-header">
+      <span class="section-label">03</span>
+      <h2 class="section-title">Character Design</h2>
+      <div class="divider"></div>
+      <p class="section-desc">A look inside the creative process — from rough thumbnail to final character, showing how personality and design evolve at each stage.</p>
+    </div>
+
+    <!-- Process: Old Man Walter -->
+    <div class="process-row">
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:8px;color:var(--ink);">Walter & Rusty</h3>
+        <p style="font-size:0.88rem;color:var(--ink-soft);margin-bottom:24px;line-height:1.7;">A gentle old man and his loyal companion — a character design for a children's book set in a quiet mountain town. Developed in Adobe Photoshop.</p>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="process-num">1</div>
+            <div class="process-text">
+              <strong>Thumbnail Sketch</strong>
+              <p>Quick gesture to capture personality and proportion</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">2</div>
+            <div class="process-text">
+              <strong>Final Sketch</strong>
+              <p>Refined linework establishing anatomy and expression</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">3</div>
+            <div class="process-text">
+              <strong>Flat Colour</strong>
+              <p>Base palette locked in — warm reds and earthy tones</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">4</div>
+            <div class="process-text">
+              <strong>Finished</strong>
+              <p>Texture, shading and final polish applied</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="process-image-wide" onclick="openLightbox('images/old-man-childrens-books.png','Walter & Rusty — full character design sheet')">
+        <img src="images/old-man-childrens-books.png" alt="Walter and Rusty character design process" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Process: Penelope -->
+    <div class="process-row">
+      <div class="process-image-wide" onclick="openLightbox('images/Untitled_Artwork 5.png','Penelope character design — sketch to colour')">
+        <img src="images/Untitled_Artwork 5.png" alt="Penelope character design process" loading="lazy">
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:8px;color:var(--ink);">Penelope, Alberto & Orange</h3>
+        <p style="font-size:0.88rem;color:var(--ink-soft);margin-bottom:24px;line-height:1.7;">A young girl with a tiny cat on her head and a curious ghost companion — characters built for a children's story. Created in Procreate.</p>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="process-num">1</div>
+            <div class="process-text">
+              <strong>Rough Sketch</strong>
+              <p>Exploring character attitude, proportions and charm</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">2</div>
+            <div class="process-text">
+              <strong>Lineart</strong>
+              <p>Clean ink pass — confident, expressive strokes</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">3</div>
+            <div class="process-text">
+              <strong>Colour</strong>
+              <p>Warm pinks and bold reds bring Penelope to life</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: DIGITAL PAINTING / REALISM -->
+  <div class="section-alt" id="digital">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">04</span>
+        <h2 class="section-title">Digital Paintings
+of Varying Complexity</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Tailoring illustration complexity and aesthetic range to align with diverse client needs and project scopes.</p>
+      </div>
+      <div class="gallery-grid cols-2">
+        <div class="gallery-item" style="aspect-ratio:4/3;" onclick="openLightbox('images/Dexterity.png','Dexterity — dancer in sunlit forest')">
+          <img src="images/Dexterity.png" alt="Dancer in sunlit forest" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">Photoshop</div>
+              <div class="gallery-item-label">Dexterity</div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item square" onclick="openLightbox('images/Untitled_Artwork 13.png','Capybara with glowing apple — atmospheric digital painting')">
+          <img src="images/Untitled_Artwork 13.png" alt="Mystical capybara with glowing apple" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">ProCreate</div>
+              <div class="gallery-item-label">The Golden Apple</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: ANIMALS -->
+  <section class="section" id="watercolor">
+    <div class="section-header">
+      <span class="section-label">05 — Animals</span>
+      <h2 class="section-title">Creatures great<br>and small</h2>
+      <div class="divider"></div>
+      <p class="section-desc">From a whimsical night-time cat to detailed pet portraits — animals brought to life with warmth and personality across digital media.</p>
+    </div>
+    <div style="display:flex; gap:20px; align-items:flex-start;">
+      <div class="gallery-item portrait" style="flex:1; aspect-ratio:auto; height:560px;" onclick="openLightbox('images/Untitled_Artwork 3.png','We Found a Goblin! — night scene')">
+        <img src="images/Untitled_Artwork 3.png" alt="Goblin cat night announcement" loading="lazy" style="width:100%;height:100%;object-fit:contain;background:oklch(14% 0.03 240);">
+        <div class="gallery-item-overlay">
+          <div>
+            <div class="gallery-item-tag">ProCreate</div>
+            <div class="gallery-item-label">We Found a Goblin!</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item portrait" style="flex:1; aspect-ratio:auto; height:560px;" onclick="openLightbox('images/Untitled_Artwork 9.png','Pets Collection — cats and dogs portraits')">
+        <img src="images/Untitled_Artwork 9.png" alt="Cats and dogs collection" loading="lazy" style="width:100%;height:100%;object-fit:contain;background:#fff;">
+        <div class="gallery-item-overlay">
+          <div>
+            <div class="gallery-item-tag">Clip Studio Paint</div>
+            <div class="gallery-item-label">Pets Collection</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: VECTOR & FLAT ILLUSTRATION -->
+  <div class="section-alt" id="vector">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-label">06</span>
+        <h2 class="section-title">Vector &amp; Flat</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Clean vector illustrations and flat design — expressive characters and editorial compositions built in Adobe Photoshop and Adobe Illustrator.</p>
+      </div>
+      <div class="gallery-grid cols-2">
+        <div class="gallery-item" style="aspect-ratio:16/9;" onclick="openLightbox('images/Mythical creatures upwork.png','Mythical Creatures — vector illustration set')">
+          <img src="images/Mythical creatures upwork.png" alt="Mythical creatures collection" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">Adobe Illustrator</div>
+              <div class="gallery-item-label">Mythical Creatures</div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item" style="aspect-ratio:16/9;" onclick="openLightbox('images/Untitled_Artwork 4.png','How We Found the Goblin — comic style')">
+          <img src="images/Untitled_Artwork 4.png" alt="How We Found the Goblin comic" loading="lazy">
+          <div class="gallery-item-overlay">
+            <div>
+              <div class="gallery-item-tag">ProCreate</div>
+              <div class="gallery-item-label">How We Found the Goblin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: TOOLS & SKILLS -->
+  <section class="section" id="tools">
+    <div class="section-header">
+      <span class="section-label">07</span>
+      <h2 class="section-title">Tools &amp; Skills</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Fluent across digital and traditional tools — adapting styles, medium and workflow to suit each project's unique needs.</p>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-card" style="height: 117px">
+        <span class="tool-icon" style="width: 0px; height: 0px">
+</span>
+        <div class="tool-name">Adobe Photoshop</div>
+        <div class="tool-type">Digital Painting</div>
+      </div>
+      <div class="tool-card" style="height: 117px">
+        <span class="tool-icon" style="width: 0px">
+</span>
+        <div class="tool-name">Adobe Illustrator</div>
+        <div class="tool-type">Vector Illustration</div>
+      </div>
+      <div class="tool-card" style="height: 117px">
+        <span class="tool-icon" style="width: 0px; height: 0px">
+</span>
+        <div class="tool-name">Procreate</div>
+        <div class="tool-type">Digital Drawing</div>
+      </div>
+      <div class="tool-card" style="height: 117px">
+        <span class="tool-icon" style="width: 0px">
+</span>
+        <div class="tool-name">Clip Studio Paint</div>
+        <div class="tool-type">PORTRAITS &amp; ILLUSTRATIONS</div>
+      </div>
+      <div class="tool-card" style="height: 117px">
+        <span class="tool-icon" style="width: 0px">
+</span>
+        <div class="tool-name">Traditional Media</div>
+        <div class="tool-type">Watercolour, Ink, Pencil</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--ink-soft);margin-bottom:16px;letter-spacing:0.04em;">Specialisations</h3>
+    <div class="skills-row">
+      <span class="skill-chip">Children's Book Illustration</span>
+      <span class="skill-chip">Fantasy Character Design</span>
+      <span class="skill-chip">Digital Portrait Painting</span>
+      <span class="skill-chip">Character Design Sheets</span>
+      <span class="skill-chip">Watercolour Style</span>
+      <span class="skill-chip">Vector & Flat Design</span>
+      <span class="skill-chip">Editorial Illustration</span>
+      <span class="skill-chip">Concept Art</span>
+      <span class="skill-chip">Storyboarding</span>
+      <span class="skill-chip">Book Cover Design</span>
+    </div>
+  </section>
+
+  <!-- FOOTER / CONTACT -->
+  <footer id="contact">
+    <div class="footer-name">Daniia Salikhova</div>
+    <div class="footer-tagline">Illustrator — Children's Books & Fantasy Art</div>
+    <div class="footer-contact">
+      <a href="mailto:daniia.salikhova.ph@gmail.com">daniia.salikhova.ph@gmail.com</a>
+    </div>
+    <div class="footer-copy">© 2026 Daniia Salikhova. All artwork is original and belongs to the artist.</div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <div id="tweaks-root"></div>
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "palette": "warm",
+      "headingFont": "Playfair Display",
+      "density": "comfortable",
+      "accentColor": "#c4683a",
+      "showLabels": true
+    }/*EDITMODE-END*/;
+
+    const PALETTES = {
+      warm:  { cream: '#faf7f3', mid: '#f3ede4', ink: '#2a2520', soft: '#6b6259', accent: '#c4683a', sageLight: '#e4f0e6' },
+      cool:  { cream: '#f4f6f9', mid: '#e8edf3', ink: '#1e2530', soft: '#556070', accent: '#4a7fa5', sageLight: '#dff0f5' },
+      sage:  { cream: '#f5f7f2', mid: '#eaefe4', ink: '#222b20', soft: '#5a6b55', accent: '#6b9c72', sageLight: '#dff0e4' },
+      dusk:  { cream: '#f9f5fb', mid: '#f0e9f5', ink: '#261e30', soft: '#6b5878', accent: '#9b6bbf', sageLight: '#ede0f5' },
+    };
+
+    const FONTS = {
+      'Playfair Display': "'Playfair Display', serif",
+      'Lora': "'Lora', serif",
+      'Cormorant Garamond': "'Cormorant Garamond', serif",
+      'DM Sans': "'DM Sans', sans-serif",
+    };
+
+    const DENSITY = {
+      compact:     { sectionPad: '56px', gap: '14px', itemRadius: '8px' },
+      comfortable: { sectionPad: '96px', gap: '20px', itemRadius: '12px' },
+      spacious:    { sectionPad: '130px', gap: '28px', itemRadius: '16px' },
+    };
+
+    function applyTweaks(t) {
+      const p = PALETTES[t.palette] || PALETTES.warm;
+      const accent = t.accentColor || p.accent;
+      const d = DENSITY[t.density] || DENSITY.comfortable;
+      const root = document.documentElement;
+      root.style.setProperty('--cream', p.cream);
+      root.style.setProperty('--cream-mid', p.mid);
+      root.style.setProperty('--ink', p.ink);
+      root.style.setProperty('--ink-soft', p.soft);
+      root.style.setProperty('--terracotta', accent);
+      root.style.setProperty('--terra-light', accent + '28');
+      root.style.setProperty('--sage-light', p.sageLight);
+
+      // Heading font
+      const hFont = FONTS[t.headingFont] || FONTS['Playfair Display'];
+      document.querySelectorAll('.hero-name, .section-title, .cover-name, h3[style*="Playfair"], .footer-name, .nav-brand').forEach(el => {
+        el.style.fontFamily = hFont;
+      });
+
+      // Section padding
+      document.querySelectorAll('.section').forEach(el => {
+        el.style.padding = d.sectionPad + ' 40px';
+      });
+      document.querySelectorAll('.gallery-grid').forEach(el => {
+        el.style.gap = d.gap;
+      });
+      document.querySelectorAll('.gallery-item').forEach(el => {
+        el.style.borderRadius = d.itemRadius;
+      });
+
+      // Labels visibility
+      document.querySelectorAll('.gallery-item-overlay').forEach(el => {
+        el.style.display = t.showLabels ? '' : 'none';
+      });
+    }
+
+    function PortfolioTweaks() {
+      const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+      React.useEffect(() => { applyTweaks(tweaks); }, [tweaks]);
+
+      return (
+        <TweaksPanel title="Tweaks">
+          <TweakSection label="Colour Palette">
+            <TweakRadio
+              id="palette"
+              value={tweaks.palette}
+              options={[
+                { value: 'warm',  label: 'Warm' },
+                { value: 'cool',  label: 'Cool' },
+                { value: 'sage',  label: 'Sage' },
+                { value: 'dusk',  label: 'Dusk' },
+              ]}
+              onChange={v => setTweak('palette', v)}
+            />
+          </TweakSection>
+          <TweakSection label="Accent Color">
+            <TweakColor
+              id="accentColor"
+              value={tweaks.accentColor}
+              onChange={v => setTweak('accentColor', v)}
+            />
+          </TweakSection>
+          <TweakSection label="Heading Font">
+            <TweakSelect
+              id="headingFont"
+              value={tweaks.headingFont}
+              options={Object.keys(FONTS).map(f => ({ value: f, label: f }))}
+              onChange={v => setTweak('headingFont', v)}
+            />
+          </TweakSection>
+          <TweakSection label="Section Density">
+            <TweakRadio
+              id="density"
+              value={tweaks.density}
+              options={[
+                { value: 'compact',     label: 'Compact' },
+                { value: 'comfortable', label: 'Default' },
+                { value: 'spacious',    label: 'Airy' },
+              ]}
+              onChange={v => setTweak('density', v)}
+            />
+          </TweakSection>
+          <TweakSection label="Image Labels">
+            <TweakToggle
+              id="showLabels"
+              value={tweaks.showLabels}
+              label="Show on hover"
+              onChange={v => setTweak('showLabels', v)}
+            />
+          </TweakSection>
+        </TweaksPanel>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<PortfolioTweaks />);
+  </script>
+
+  <script>
+    function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      img.src = src;
+      img.alt = caption || '';
+      cap.textContent = caption || '';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Fade-in sections on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.gallery-item, .tool-card, .process-row').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

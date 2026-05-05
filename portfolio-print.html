@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniia Salikhova — Illustrator Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:        #faf7f3;
+      --cream-mid:    #f3ede4;
+      --ink:          #2a2520;
+      --ink-soft:     #6b6259;
+      --terracotta:   #c4683a;
+      --terra-light:  #f5e6dd;
+      --sage:         #6b9c72;
+      --sage-light:   #e4f0e6;
+      --gold:         #c4952a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 14px; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── PAGE WRAPPER ───────────────────────────────────── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 16mm 14mm;
+      position: relative;
+      break-after: page;
+      background: var(--cream);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page:last-child { break-after: avoid; }
+
+    /* ── COVER PAGE ─────────────────────────────────────── */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 297mm;
+      padding: 20mm 14mm;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-blob-1 {
+      position: absolute;
+      width: 160mm;
+      height: 160mm;
+      border-radius: 50%;
+      background: #f0e0d4;
+      top: -40mm;
+      left: -40mm;
+      z-index: 0;
+    }
+
+    .cover-blob-2 {
+      position: absolute;
+      width: 120mm;
+      height: 120mm;
+      border-radius: 50%;
+      background: #dfeee1;
+      bottom: -30mm;
+      right: -30mm;
+      z-index: 0;
+    }
+
+    .cover-content { position: relative; z-index: 1; max-width: 140mm; }
+
+    .cover-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    .cover-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.2rem;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .cover-name em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .cover-tagline {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .cover-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--terracotta);
+      margin: 0 auto 28px;
+      border-radius: 2px;
+    }
+
+    .cover-contact {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    .cover-contact a {
+      color: var(--terracotta);
+      text-decoration: none;
+    }
+
+    .cover-toc {
+      margin-top: 36px;
+      text-align: left;
+      width: 100%;
+      max-width: 110mm;
+    }
+
+    .cover-toc-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
+    }
+
+    .cover-toc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 6px 0;
+      border-bottom: 1px solid #e8e0d8;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    .cover-toc-item span:last-child {
+      color: var(--terracotta);
+      font-size: 0.72rem;
+      letter-spacing: 0.10em;
+    }
+
+    /* ── SECTION HEADER ─────────────────────────────────── */
+    .section-label {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .section-desc {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      max-width: 120mm;
+      line-height: 1.7;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--terracotta);
+      margin: 14px 0 0;
+      border-radius: 2px;
+    }
+
+    .section-header { margin-bottom: 18px; }
+
+    /* ── GALLERY GRIDS ──────────────────────────────────── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8mm;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6mm;
+    }
+
+    .grid-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 7mm;
+    }
+
+    .img-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--cream-mid);
+      break-inside: avoid;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .img-wrap.portrait img { aspect-ratio: 3/4; object-fit: cover; }
+    .img-wrap.landscape img { aspect-ratio: 4/3; object-fit: cover; }
+    .img-wrap.wide img { aspect-ratio: 16/9; object-fit: cover; }
+    .img-wrap.square img { aspect-ratio: 1/1; object-fit: cover; }
+    .img-wrap.natural img { aspect-ratio: auto; max-height: 80mm; object-fit: contain; }
+    .img-wrap.natural-tall img { aspect-ratio: auto; max-height: 100mm; object-fit: contain; }
+
+    .img-label {
+      padding: 5px 10px 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .img-title {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .img-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+    }
+
+    /* ── PROCESS LAYOUT ─────────────────────────────────── */
+    .process-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10mm;
+      align-items: start;
+      margin-bottom: 14mm;
+      break-inside: avoid;
+    }
+
+    .process-steps { display: flex; flex-direction: column; gap: 10px; }
+
+    .process-step { display: flex; gap: 10px; align-items: flex-start; }
+
+    .process-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--terra-light);
+      color: var(--terracotta);
+      font-size: 0.68rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .process-text strong {
+      font-weight: 500;
+      color: var(--ink);
+      font-size: 0.8rem;
+      display: block;
+    }
+
+    .process-text p {
+      font-size: 0.74rem;
+      color: var(--ink-soft);
+      margin-top: 1px;
+    }
+
+    .process-h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .process-desc {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .process-img {
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--cream-mid);
+    }
+
+    .process-img img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      max-height: 90mm;
+    }
+
+    /* ── TOOLS SECTION ──────────────────────────────────── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5mm;
+      margin-bottom: 12mm;
+    }
+
+    .tool-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 14px 10px;
+      text-align: center;
+      border: 1px solid #e8e0d8;
+    }
+
+    .tool-icon { font-size: 1.6rem; margin-bottom: 6px; display: block; }
+    .tool-name { font-size: 0.72rem; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+    .tool-type { font-size: 0.6rem; color: var(--ink-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    .skills-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .skills-row { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    .skill-chip {
+      padding: 5px 12px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      background: var(--sage-light);
+      color: #3a6b42;
+    }
+
+    /* ── ALT BACKGROUND SECTIONS ────────────────────────── */
+    .page-alt { background: var(--cream-mid); }
+
+    /* ── PAGE FOOTER ────────────────────────────────────── */
+    .page-footer {
+      position: absolute;
+      bottom: 10mm;
+      left: 14mm;
+      right: 14mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.62rem;
+      color: var(--ink-soft);
+      opacity: 0.6;
+      border-top: 1px solid #ddd;
+      padding-top: 4mm;
+    }
+
+    /* ── CONTACT PAGE ───────────────────────────────────── */
+    .contact-page {
+      background: var(--ink);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .contact-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .contact-tagline {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 20px;
+    }
+
+    .contact-email {
+      font-size: 1rem;
+      color: #c4952a;
+      margin-bottom: 6px;
+    }
+
+    .contact-copy {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 32px;
+    }
+
+    /* ── PRINT MEDIA ────────────────────────────────────── */
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+      body { background: white; }
+      .page { margin: 0; width: 210mm; min-height: 297mm; }
+      nav, .lightbox, .hero-scroll-hint { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: COVER -->
+  <div class="page cover">
+    <div class="cover-blob-1"></div>
+    <div class="cover-blob-2"></div>
+    <div class="cover-content">
+      <div class="cover-eyebrow">Illustrator Portfolio · 2026</div>
+      <h1 class="cover-name">Daniia<br><em>Salikhova</em></h1>
+      <div class="cover-divider"></div>
+      <p class="cover-tagline">Illustrator specializing in children's books and fantasy art —<br>bridging warmth and wonder across traditional and digital media.</p>
+      <div class="cover-contact">
+        <a href="mailto:daniia.salikhova.ph@gmail.com">daniia.salikhova.ph@gmail.com</a>
+      </div>
+      <div class="cover-toc">
+        <div class="cover-toc-title">Contents</div>
+        <div class="cover-toc-item"><span>01 — Children's Book Illustration</span><span>ProCreate · Clip Studio Paint</span></div>
+        <div class="cover-toc-item"><span>02 — Fantasy &amp; Character Portraits</span><span>Photoshop · ProCreate</span></div>
+        <div class="cover-toc-item"><span>03 — Character Design Process</span><span>Clip Studio Paint · ProCreate</span></div>
+        <div class="cover-toc-item"><span>04 — Digital Painting</span><span>Photoshop · ProCreate</span></div>
+        <div class="cover-toc-item"><span>05 — Watercolour Style</span><span>ProCreate · Clip Studio Paint</span></div>
+        <div class="cover-toc-item"><span>06 — Vector &amp; Flat Illustration</span><span>Adobe Illustrator</span></div>
+        <div class="cover-toc-item"><span>07 — Tools &amp; Skills</span><span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: CHILDREN'S BOOK ILLUSTRATION -->
+  <div class="page">
+    <div class="section-header">
+      <span class="section-label">01 — Children's Books</span>
+      <h2 class="section-title">Where stories come to life</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Warm, expressive illustration for young readers — from cosy interiors to adventurous scenes. Created in ProCreate and Clip Studio Paint.</p>
+    </div>
+    <div class="grid-2" style="margin-bottom:7mm;">
+      <div class="img-wrap landscape">
+        <img src="images/21_redone.jpg" alt="Boy reading at desk">
+        <div class="img-label"><span class="img-title">Boy at Desk</span><span class="img-tag">ProCreate</span></div>
+      </div>
+      <div class="img-wrap portrait">
+        <img src="images/33_redone.jpg" alt="Four seasons circular composition">
+        <div class="img-label"><span class="img-title">Four Seasons</span><span class="img-tag">Clip Studio Paint</span></div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="img-wrap landscape">
+        <img src="images/10.jpg" alt="Cosy living room">
+        <div class="img-label"><span class="img-title">Cosy Living Room</span><span class="img-tag">ProCreate</span></div>
+      </div>
+      <div class="img-wrap landscape">
+        <img src="images/Untitled_Artwork 2 copy.png" alt="Girl conjuring magical book">
+        <div class="img-label"><span class="img-title">The Magic Book</span><span class="img-tag">Clip Studio Paint</span></div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>Daniia Salikhova — Illustrator Portfolio</span>
+      <span>01 Children's Books</span>
+    </div>
+  </div>
+
+  <!-- PAGE 3: FANTASY & PORTRAITS (top 3) -->
+  <div class="page page-alt">
+    <div class="section-header">
+      <span class="section-label">02 — Fantasy &amp; Portraits</span>
+      <h2 class="section-title">Epic worlds, intimate faces</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Detailed character portraits ranging from moody warriors to ethereal beings. Digital painting in Photoshop and ProCreate.</p>
+    </div>
+    <div class="grid-3">
+      <div class="img-wrap portrait">
+        <img src="images/Untitled_Artwork.png" alt="Warrior with red moon">
+        <div class="img-label"><span class="img-title">Red Moon Warrior</span><span class="img-tag">Photoshop</span></div>
+      </div>
+      <div class="img-wrap portrait">
+        <img src="images/Untitled_Artwork 1.png" alt="Fantasy priestess in white">
+        <div class="img-label"><span class="img-title">The Priestess</span><span class="img-tag">Photoshop</span></div>
+      </div>
+      <div class="img-wrap portrait">
+        <img src="images/Shadowheart (Selune) Artstation.png" alt="Shadowheart portrait">
+        <div class="img-label"><span class="img-title">Shadowheart</span><span class="img-tag">Photoshop</span></div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>Daniia Salikhova — Illustrator Portfolio</span>
+      <span>02 Fantasy &amp; Portraits</span>
+    </div>
+  </div>
+
+  <!-- PAGE 4: FANTASY & PORTRAITS (bottom 3) -->
+  <div class="page page-alt">
+    <div class="section-header" style="margin-bottom:12px;">
+      <span class="section-label">02 — Fantasy &amp; Portraits (continued)</span>
+    </div>
+    <div class="grid-3">
+      <div class="img-wrap portrait">
+        <img src="images/Untitled_Artwork 6.png" alt="Albino elf close-up portrait">
+        <div class="img-label"><span class="img-title">Albino Elf</span><span class="img-tag">ProCreate</span></div>
+      </div>
+      <div class="img-wrap portrait">
+        <img src="images/Untitled_Artwork 7.png" alt="Redhead girl in blossom field">
+        <div class="img-label"><span class="img-title">Blossom</span><span class="img-tag">ProCreate</span></div>
+      </div>
+      <div class="img-wrap portrait">
+        <img src="images/Untitled_Artwork 11.png" alt="Mermaid underwater portrait">
+        <div class="img-label"><span class="img-title">Sea Keeper</span><span class="img-tag">ProCreate</span></div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>Daniia Salikhova — Illustrator Portfolio</span>
+      <span>02 Fantasy &amp; Portraits</span>
+    </div>
+  </div>
+
+  <!-- PAGE 5: CHARACTER DESIGN PROCESS -->
+  <div class="page">
+    <div class="section-header">
+      <span class="section-label">03 — Character Design</span>
+      <h2 class="section-title">From sketch to story</h2>
+      <div class="divider"></div>
+      <p class="section-desc">A look inside the creative process — from rough thumbnail to final character, showing how personality and design evolve at each stage.</p>
+    </div>
+
+    <div class="process-row">
+      <div>
+        <div class="process-h3">Walter &amp; Rusty</div>
+        <p class="process-desc">A gentle old man and his loyal companion — character design for a children's book. Developed in Clip Studio Paint.</p>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="process-num">1</div>
+            <div class="process-text"><strong>Thumbnail Sketch</strong><p>Quick gesture to capture personality and proportion</p></div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">2</div>
+            <div class="process-text"><strong>Final Sketch</strong><p>Refined linework establishing anatomy and expression</p></div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">3</div>
+            <div class="process-text"><strong>Flat Colour</strong><p>Base palette locked in — warm reds and earthy tones</p></div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">4</div>
+            <div class="process-text"><strong>Finished</strong><p>Texture, shading and final polish applied</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="process-img">
+        <img src="images/old-man-childrens-books.png" alt="Walter and Rusty character design process">
+      </div>
+    </div>
+
+    <div class="process-row">
+      <div class="process-img">
+        <img src="images/Untitled_Artwork 5.png" alt="Penelope character design process">
+      </div>
+      <div>
+        <div class="process-h3">Penelope, Alberto &amp; Orange</div>
+        <p class="process-desc">A young girl with a tiny cat on her head and a curious ghost companion — characters for a whimsical children's story. Created in ProCreate.</p>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="process-num">1</div>
+            <div class="process-text"><strong>Rough Sketch</strong><p>Exploring character attitude, proportions and charm</p></div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">2</div>
+            <div class="process-text"><strong>Lineart</strong><p>Clean ink pass — confident, expressive strokes</p></div>
+          </div>
+          <div class="process-step">
+            <div class="process-num">3</div>
+            <div class="process-text"><strong>Colour</strong><p>Warm pinks and bold reds bring Penelope to life</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>Daniia Salikhova — Illustrator Portfolio</span>
+      <span>03 Character Design</span>
+    </div>
+  </div>
+
+  <!-- PAGE 6: DIGITAL PAINTING -->
+  <div class="page page-alt">
+    <div class="section-header">
+      <span class="section-label">04 — Digital Painting</span>
+      <h2 class="section-title">Light, mood and atmosphere</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Painterly digital work exploring dramatic lighting and emotional depth — from luminous forest scenes to intimate still-life studies.</p>
+    </div>
+    <div class="grid-2">
+      <div class="img-wrap landscape">
+        <img src="images/Dexterity.png" alt="Dancer in sunlit forest">
+        <div class="img-label"><span class="img-title">Dexterity</span><span class="img-tag">Photoshop</span></div>
+      </div>
+      <div class="img-wrap square">
+        <img src="images/Untitled_Artwork 13.png" alt="Mystical capybara with glowing apple">
+        <div class="img-label"><span class="img-title">The Golden Apple</span><span class="img-tag">ProCreate</span></div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>Daniia Salikhova — Illustrator Portfolio</span>
+      <span>04 Digital Painting</span>
+    </div>
+  </div>
+
+  <!-- PAGE 7: ANIMALS -->
+  <div class="page">
+    <div class="section-header">
+      <span class="section-label">05 — Animals</span>
+      <h2 class="section-title">Creatures great and small</h2>
+      <div class="divider"></div>
+      <p class="section-desc">From a whimsical night-time cat to detailed pet portraits — animals brought to life with warmth and personality across digital media.</p>
+    </div>
+    <div class="grid-2">
+      <div class="img-wrap" style="background:#111a2e; border-radius:8px; overflow:hidden;">
+        <img src="images/Untitled_Artwork 3.png" alt="Goblin cat night announcement" style="width:100%;display:block;max-height:180mm;object-fit:contain;">
+        <div class="img-label"><span class="img-title">We Found a Goblin!</span><span class="img-tag">ProCreate</span></div>
+      </div>
+      <div class="img-wrap" style="background:#fff; border-radius:8px; overflow:hidden;">
+        <img src="images/Untitled_Artwork 9.png" alt="Cats and dogs collection" style="width:100%;display:block;max-height:180mm;object-fit:contain;">
+        <div class="img-label"><span class="img-title">Pets Collection</span><span class="img-tag">Clip Studio Paint</span></div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>Daniia Salikhova — Illustrator Portfolio</span>
+      <span>05 Animals</span>
+    </div>
+  </div>
+
+  <!-- PAGE 8: VECTOR & FLAT -->
+  <div class="page page-alt">
+    <div class="section-header">
+      <span class="section-label">06 — Vector &amp; Flat</span>
+      <h2 class="section-title">Bold shapes, playful worlds</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Clean vector illustration and flat design — expressive characters and editorial compositions built in Adobe Illustrator.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:7mm;">
+      <div class="img-wrap wide">
+        <img src="images/Mythical creatures upwork.png" alt="Mythical creatures collection">
+        <div class="img-label"><span class="img-title">Mythical Creatures</span><span class="img-tag">Adobe Illustrator</span></div>
+      </div>
+      <div class="img-wrap wide">
+        <img src="images/Untitled_Artwork 4.png" alt="How We Found the Goblin comic">
+        <div class="img-label"><span class="img-title">How We Found the Goblin</span><span class="img-tag">ProCreate</span></div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span>Daniia Salikhova — Illustrator Portfolio</span>
+      <span>06 Vector &amp; Flat</span>
+    </div>
+  </div>
+
+  <!-- PAGE 9: TOOLS & SKILLS -->
+  <div class="page">
+    <div class="section-header">
+      <span class="section-label">07 — Tools &amp; Skills</span>
+      <h2 class="section-title">Craft across every medium</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Fluent across digital and traditional tools — adapting style, medium and workflow to suit each project's unique needs.</p>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-icon">🖌️</span>
+        <div class="tool-name">Adobe Photoshop</div>
+        <div class="tool-type">Digital Painting</div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-icon">✏️</span>
+        <div class="tool-name">Adobe Illustrator</div>
+        <div class="tool-type">Vector Illustration</div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-icon">📱</span>
+        <div class="tool-name">ProCreate</div>
+        <div class="tool-type">Digital Drawing</div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-icon">🎨</span>
+        <div class="tool-name">Clip Studio Paint</div>
+        <div class="tool-type">Manga &amp; Illustration</div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-icon">🖊️</span>
+        <div class="tool-name">Traditional Media</div>
+        <div class="tool-type">Watercolour, Ink, Pencil</div>
+      </div>
+    </div>
+
+    <div class="skills-label">Specialisations</div>
+    <div class="skills-row">
+      <span class="skill-chip">Children's Book Illustration</span>
+      <span class="skill-chip">Fantasy Character Design</span>
+      <span class="skill-chip">Digital Portrait Painting</span>
+      <span class="skill-chip">Character Design Sheets</span>
+      <span class="skill-chip">Watercolour Style</span>
+      <span class="skill-chip">Vector &amp; Flat Design</span>
+      <span class="skill-chip">Editorial Illustration</span>
+      <span class="skill-chip">Concept Art</span>
+      <span class="skill-chip">Storyboarding</span>
+      <span class="skill-chip">Book Cover Design</span>
+    </div>
+
+    <div class="page-footer">
+      <span>Daniia Salikhova — Illustrator Portfolio</span>
+      <span>07 Tools &amp; Skills</span>
+    </div>
+  </div>
+
+  <!-- PAGE 10: CONTACT -->
+  <div class="page contact-page">
+    <div class="contact-name">Daniia Salikhova</div>
+    <div class="contact-tagline">Illustrator — Children's Books &amp; Fantasy Art</div>
+    <div class="contact-email">daniia.salikhova.ph@gmail.com</div>
+    <div class="contact-copy">© 2026 Daniia Salikhova. All artwork is original and belongs to the artist.</div>
+  </div>
+
+  <script>
+    // Auto-print after fonts and images are ready
+    window.addEventListener('load', function () {
+      document.fonts.ready.then(function () {
+        setTimeout(function () {
+          window.print();
+        }, 500);
+      });
+    });
+  </script>
+
+</body>
+</html>
